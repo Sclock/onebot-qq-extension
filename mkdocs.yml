@@ -1,6 +1,16 @@
-site_name: My Docs
+site_name: OneBot 12 QQ扩展草案
+
 theme:
   name: material
+  custom_dir: theme
+  language: zh
+  palette:
+    primary: black
+    accent: indigo
+  features:
+    - navigation.sections
+    - navigation.tabs
+
 nav:
   - 介绍: index.md
   - 安装:
@@ -11,6 +21,7 @@ nav:
       - 语法总览: syntax/main.md
       - 标题: syntax/headline.md
       - 段落: syntax/paragraph.md
+
 markdown_extensions:
   - admonition
   - codehilite:

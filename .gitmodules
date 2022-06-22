@@ -1,0 +1,3 @@
+[submodule "onebot-material-theme"]
+	path = onebot-material-theme
+	url = https://github.com/botuniverse/onebot-material-theme.git
