@@ -27,10 +27,7 @@ nav:
   - 介绍: index.md
   - 接口定义:
       - 概述: interface/index.md
-      - 消息接口:
-          - 消息数据类型: interface/message/type.md
-          - 消息段: interface/message/segments.md
-          - 消息动作: interface/message/actions.md
+      - 消息接口: interface/message.md
       - 单用户接口（Private / Direct）:
           - 用户消息事件: interface/user/message-events.md
           - 用户通知事件: interface/user/notice-events.md
