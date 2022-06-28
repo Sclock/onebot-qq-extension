@@ -1,13 +1,9 @@
-import inspect
-import sys
-from typing import Any, Dict, Literal, Optional, List, NoReturn, Type, TYPE_CHECKING
+from typing import TYPE_CHECKING, Any, Dict, NoReturn, Optional, Type
 
 from nonebot.adapters.onebot.exception import ActionFailed as BaseActionFailed
 
-# from pydantic.main import BaseModel
-
-ERROR_DICT: Dict[str, Type["ActionFailed"]] = {}
-# # 以retcode为key存到字典里
+_ERROR_DICT: Dict[str, Type["ActionFailed"]] = {}
+# 以retcode为key存到字典里
 
 
 class ActionFailedMata(type):
@@ -19,7 +15,7 @@ class ActionFailedMata(type):
 
     def __new__(cls, * args, **kwargs):
         obj: ActionFailed = type.__new__(cls, *args, **kwargs)
-        ERROR_DICT[str(obj.retcode)] = obj
+        _ERROR_DICT[str(obj.retcode)] = obj
         return obj
 
 
@@ -241,7 +237,7 @@ def raise_action_error(**raise_data: Optional[Dict[str, Any]]) -> NoReturn:
     assert len(retcode) == 5
 
     for i in [None, -2, -3, -4]:
-        rise_error = ERROR_DICT.get(retcode[:i].ljust(5, "0"))
+        rise_error = _ERROR_DICT.get(retcode[:i].ljust(5, "0"))
         if rise_error is not None:
             raise rise_error(**raise_data)
 
