@@ -204,31 +204,29 @@ class IAmTired(ExecutionError):
     retcode = 36000
 
 # walle_q 扩展
+# class ImageError(ActionFailed):
+#     """4xxxx 图片解析错误错误段"""
+#     retcode = 40001
 
 
-class ImageError(ActionFailed):
-    """4xxxx 图片解析错误错误段"""
-    retcode = 40001
+# class ImageInfoDecodeErrorActionFailed(BaseActionFailed):
+#     """41001 图片信息解码错误, 图片信息解码错误"""
+#     retcode = 41001
 
 
-class ImageInfoDecodeErrorActionFailed(BaseActionFailed):
-    """41001 图片信息解码错误, 图片信息解码错误"""
-    retcode = 41001
+# class ImageUrlErrorActionFailed(BaseActionFailed):
+#     """41002 图片URL错误, 图片URL不存在或解析错误"""
+#     retcode = 41002
 
 
-class ImageUrlErrorActionFailed(BaseActionFailed):
-    """41002 图片URL错误, 图片URL不存在或解析错误"""
-    retcode = 41002
+# class ImagePathErrorActionFailed(BaseActionFailed):
+#     """41003 图片路径错误, 图片路径不存在或解析错误"""
+#     retcode = 41003
 
 
-class ImagePathErrorActionFailed(BaseActionFailed):
-    """41003 图片路径错误, 图片路径不存在或解析错误"""
-    retcode = 41003
-
-
-class ImageDataErrorActionFailed(BaseActionFailed):
-    """41004 图片内容错误, 图片文件下载或读取失败"""
-    retcode = 41004
+# class ImageDataErrorActionFailed(BaseActionFailed):
+#     """41004 图片内容错误, 图片文件下载或读取失败"""
+#     retcode = 41004
 
 
 def raise_action_error(**raise_data: Optional[Dict[str, Any]]) -> NoReturn:
