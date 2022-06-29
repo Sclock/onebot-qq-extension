@@ -1,5 +1,5 @@
 import json
-from typing import Any
+from typing import Any, TYPE_CHECKING
 
 from nonebot.adapters import Bot
 from nonebot.adapters.onebot.collator import Collator
