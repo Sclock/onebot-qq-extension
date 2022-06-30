@@ -3,23 +3,10 @@ from typing import TYPE_CHECKING, Any, Dict, NoReturn, Optional, Type
 from nonebot.adapters.onebot.exception import ActionFailed as BaseActionFailed
 
 _ERROR_DICT: Dict[str, Type["ActionFailed"]] = {}
-# 以retcode为key存到字典里
+"""以retcode为key存储ActionFailed的派生"""
 
 
-class ActionFailedMata(type):
-    if TYPE_CHECKING:
-        status: str
-        retcode: int
-        message: str
-        echo: Optional[str] = None
-
-    def __new__(cls, * args, **kwargs):
-        obj: ActionFailed = type.__new__(cls, *args, **kwargs)
-        _ERROR_DICT[str(obj.retcode)] = obj
-        return obj
-
-
-class ActionFailed(BaseActionFailed, metaclass=ActionFailedMata):
+class ActionFailed(BaseActionFailed):
     status = "failed"
     """执行状态"""
     retcode = -1
@@ -28,6 +15,11 @@ class ActionFailed(BaseActionFailed, metaclass=ActionFailedMata):
     """错误信息"""
     echo: Optional[str] = None
     """应原样返回动作请求中的 echo"""
+
+    # 
+    def __init_subclass__(cls) -> None:
+        super().__init_subclass__()
+        _ERROR_DICT[str(cls.retcode)] = cls
 
 
 class RequestError(ActionFailed):
@@ -241,6 +233,3 @@ def raise_action_error(**raise_data: Optional[Dict[str, Any]]) -> NoReturn:
             raise rise_error(**raise_data)
 
     raise ActionFailed(**raise_data)
-
-
-# print(ActionFailed.__subclasses__())
