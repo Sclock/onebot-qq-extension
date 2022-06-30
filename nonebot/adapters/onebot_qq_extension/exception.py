@@ -206,27 +206,27 @@ class IAmTired(ExecutionError):
 
 # walle_q 扩展
 class ImageError(ActionFailed):
-    """4xxxx 图片解析错误错误段"""
-    retcode = 60001
+    """6xxxx 图片解析错误错误段"""
+    retcode = 61000
 
 
-class ImageInfoDecodeErrorActionFailed(BaseActionFailed):
-    """41001 图片信息解码错误, 图片信息解码错误"""
+class ImageInfoDecodeErrorActionFailed(ImageError):
+    """61001 图片信息解码错误, 图片信息解码错误"""
     retcode = 61001
 
 
-class ImageUrlErrorActionFailed(BaseActionFailed):
-    """41002 图片URL错误, 图片URL不存在或解析错误"""
+class ImageUrlErrorActionFailed(ImageError):
+    """61002 图片URL错误, 图片URL不存在或解析错误"""
     retcode = 61002
 
 
-class ImagePathErrorActionFailed(BaseActionFailed):
-    """41003 图片路径错误, 图片路径不存在或解析错误"""
+class ImagePathErrorActionFailed(ImageError):
+    """60003 图片路径错误, 图片路径不存在或解析错误"""
     retcode = 61003
 
 
-class ImageDataErrorActionFailed(BaseActionFailed):
-    """41004 图片内容错误, 图片文件下载或读取失败"""
+class ImageDataErrorActionFailed(ImageError):
+    """61004 图片内容错误, 图片文件下载或读取失败"""
     retcode = 61004
 
 
@@ -241,3 +241,6 @@ def raise_action_error(**raise_data: Optional[Dict[str, Any]]) -> NoReturn:
             raise rise_error(**raise_data)
 
     raise ActionFailed(**raise_data)
+
+
+# print(ActionFailed.__subclasses__())
