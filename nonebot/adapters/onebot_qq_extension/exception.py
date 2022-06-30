@@ -16,10 +16,17 @@ class ActionFailed(BaseActionFailed):
     echo: Optional[str] = None
     """应原样返回动作请求中的 echo"""
 
-    # 
+    # 简化魔法方法
     def __init_subclass__(cls) -> None:
         super().__init_subclass__()
         _ERROR_DICT[str(cls.retcode)] = cls
+
+    # 扩展字符串打印方法
+    def __repr__(self):
+        return (
+            f"<{type(self).__name__} " +
+            ", ".join(f"{k}={v}" for k, v in self.info.items()) + ">"
+        )
 
 
 class RequestError(ActionFailed):
