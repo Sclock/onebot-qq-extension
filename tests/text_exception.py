@@ -51,13 +51,21 @@ class TestException(unittest.TestCase):
         raise_data["retcode"] = "99999"
         with self.assertRaises(ActionFailed):
             raise_action_error(**raise_data)
-    
+
     def test_inheritance(self):
         class TestActionFailed(ActionFailed):
             retcode = 61101
-        
+
         raise_data = {"retcode": "61101"}
         with self.assertRaises(ActionFailed):
             raise_action_error(**raise_data)
         with self.assertRaises(TestActionFailed):
             raise_action_error(**raise_data)
+
+        raise_data["retcode"] = "32004"
+        try:
+            raise_action_error(**raise_data)
+        # except FileWriteErrorActionFailed as e:
+        #     print("FileWriteErrorActionFailed", e)
+        except ActionFailed as e:
+            print("ActionFailed", e)
