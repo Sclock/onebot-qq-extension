@@ -218,3 +218,4 @@ $RECYCLE.BIN/
 main.py
 
 # End of https://www.toptal.com/developers/gitignore/api/visualstudiocode,windows,python
+poetry.sh

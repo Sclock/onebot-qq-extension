@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "onebot_qq_extension"
-version = "0.1.0"
+version = "0.1.1"
 description = "基于 OneBot v12 子协议 OneBot QQ Extension 实现的 nonebot2 适配器"
 authors = ["Sclock <1342810270@qq.com>"]
 license = "MIT"
