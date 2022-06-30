@@ -147,13 +147,13 @@ class FileNotFoundErrorActionFailed(FilesystemError):
     retcode = 32005
 
 
-class NetworkError(ExecutionError):
+class NetworkErrorExecution(ExecutionError):
     """33xxx 动作执行错误"""
     retcode = 33000
 
 
 # walle_q 扩展
-class NetDownloadErrorActionFailed(NetworkError):
+class NetDownloadErrorActionFailed(NetworkErrorExecution):
     """33001 网络下载错误, 网络下载错误"""
     retcode = 33001
 
